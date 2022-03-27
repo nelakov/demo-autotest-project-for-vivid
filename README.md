@@ -1,4 +1,4 @@
-# Vivid Money test automation project
+# Demonstration test automation project for Vivid Money
 
 ## :page_with_curl:    Content
 
