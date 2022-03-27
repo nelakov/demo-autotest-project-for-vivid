@@ -1,6 +1,6 @@
-#Vivid Money test automation project
+# Vivid Money test automation project
 
-## :page_with_curl:	Content
+## :page_with_curl:    Content
 
 > :heavy_check_mark: [Covered functionality](#earth_africa-covered-functionality)
 >
@@ -16,10 +16,10 @@
 >
 > :heavy_check_mark: [An example of running a test in Selenoid](#-an-example-of-running-a-test-in-selenoid)
 
-
 ## :technologist: Covered functionality
 
 > UI autotests developed <code>UI</code>.
+
 ### UI
 
 - [x] Open account with random phone number
@@ -61,7 +61,6 @@ In this project, autotests are written in <code>Java</code> using <code>Selenide
 >
 > After the run is completed, notifications are sent using the bot to <code>Telegram</code>.
 
-
 ## Running tests from the terminal
 
 ### :robot: Running Tests Locally
@@ -71,6 +70,7 @@ gradle clean test
 ```
 
 ### :robot: Remote test running
+
 ## <img src="images/logo/Jenkins.svg" width="25" height="25"  alt="Jenkins"/></a> Jenkins <a target="_blank" href="https://jenkins.autotests.cloud/job/demo-project-for-vivid/"> job </a>
 
 ```
@@ -95,9 +95,7 @@ test
 >
 > <code>BROWSER_SIZE</code> – the size of the browser window the tests will be run (_default - <code>1920x1080</code>_).
 
-
-
-### :pushpin: Main page of <a target="_blank" href="https://jenkins.autotests.cloud/job/demo-project-for-vivid/8/allure/</a>
+### :pushpin: Main page of <a target="_blank" href="https://jenkins.autotests.cloud/job/demo-project-for-vivid/8/allure/">Allure-report</a>
 
 <p align="center">
 <img title="Allure Overview" src="images/screens/allure_overview.png">
@@ -109,13 +107,11 @@ test
 <img title="Allure Behaviors" src="images/screens/allure_behaviors.png">
 </p>
 
-
 ### :pushpin: Main dashboard
 
 <p align="center">
 <img title="Allure Overview Dashboard" src="images/screens/allure_overview_dashboard.png">
 </p>
-
 
 ## <img width="4%" title="Telegram" src="images/logo/Telegram.svg"> Telegram notifications using a bot
 
@@ -127,7 +123,14 @@ test
 
 ## <img width="4%" title="Selenoid" src="images/logo/Selenoid.svg"> An example of running a test in Selenoid
 
-> A video is attached to each test in the report. One of these videos is shown below.
+> A video is attached to each test in the report. Two of these videos is shown below.
+
+```Positive test```
 <p align="center">
   <img title="Selenoid Video" src="images/gif/selenoid_video.gif">
+</p>
+
+```Negative test```
+<p align="center">
+  <img title="Selenoid Video" src="images/gif/selenoid_video_2.gif">
 </p>
