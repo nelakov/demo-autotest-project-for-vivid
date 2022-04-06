@@ -17,6 +17,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public class TestBase {
     @BeforeAll
     static void setUp() {
+        //
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DriverSettings.configure();
     }
