@@ -14,7 +14,7 @@ public class MainPageTests extends TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
         mainPage
                 .openPage()
-                //.playVideoBlock()
+                .playVideoBlock()
                 .checkOpenAccountButton();
     }
 }

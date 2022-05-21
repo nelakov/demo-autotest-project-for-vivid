@@ -14,6 +14,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
+import static com.codeborne.selenide.Selenide.open;
+
 
 @ExtendWith({AllureJunit5.class})
 public class TestBase {
@@ -22,6 +25,12 @@ public class TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DriverSettings.configure();
     }
+
+    @AfterEach
+    void openVivid() {
+        open("https://vivid.money/en-eu/");
+    }
+
     @AfterEach
     public void addAttachments() {
         String sessionId = DriverUtils.getSessionId();
