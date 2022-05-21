@@ -1,5 +1,7 @@
 package vivid.tests;
 
+import com.codeborne.selenide.Config;
+import com.codeborne.selenide.Configuration;
 import vivid.config.Project;
 import vivid.helpers.AllureAttachments;
 import vivid.helpers.DriverSettings;
@@ -17,11 +19,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public class TestBase {
     @BeforeAll
     static void setUp() {
-        //
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DriverSettings.configure();
     }
-
     @AfterEach
     public void addAttachments() {
         String sessionId = DriverUtils.getSessionId();

@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DriverSettings {
-
     public static void configure() {
         Configuration.browser = Project.config.browser();
         Configuration.browserVersion = Project.config.browserVersion();

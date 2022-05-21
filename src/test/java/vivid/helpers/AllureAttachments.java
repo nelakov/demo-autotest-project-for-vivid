@@ -28,12 +28,10 @@ public class AllureAttachments {
     public static byte[] addScreenshotAs(String attachName) {
         return DriverUtils.getScreenshotAsBytes();
     }
-
     @Attachment(value = "Page source", type = "text/html")
     public static byte[] addPageSource() {
         return DriverUtils.getPageSourceAsBytes();
     }
-
     public static void addVideo(String sessionId) {
         URL videoUrl = DriverUtils.getVideoUrl(sessionId);
         if (videoUrl != null) {

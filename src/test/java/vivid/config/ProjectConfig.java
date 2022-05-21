@@ -2,9 +2,8 @@ package vivid.config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources("classpath:config/${properties}.properties")
+@Config.Sources("classpath:config/local.properties")
 public interface ProjectConfig extends Config {
-
     @Key("remoteDriverUrl")
     @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub/")
     String remoteDriverUrl();
