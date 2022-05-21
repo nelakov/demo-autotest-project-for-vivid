@@ -45,7 +45,6 @@ public class OpenAccountNegativeTests extends TestBase {
 
     @MethodSource(value = "dataForNegativeOpenAccountTestsWithEmail")
     @ParameterizedTest(name = "Validation the Email input field {0}")
-    @DisplayName("Check validation the Phone input field")
     void OpenFreeAccountWithWrongEmail(String wrongEmail, String errorMessage) {
         openAccountPage
                 .OpenAccountFromMainBlock()
