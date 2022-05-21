@@ -21,7 +21,6 @@ public class MainPage {
 
     @Step("Opening main page")
     public MainPage openPage() {
-        open("/");
         mainTitle.shouldBe(visible);
         mainTitle.shouldHave(text("Let your money grow"));
         mainDescription.shouldBe(visible);

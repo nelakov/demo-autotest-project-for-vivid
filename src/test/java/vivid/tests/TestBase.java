@@ -2,6 +2,7 @@ package vivid.tests;
 
 import com.codeborne.selenide.Config;
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeEach;
 import vivid.config.Project;
 import vivid.helpers.AllureAttachments;
 import vivid.helpers.DriverSettings;
@@ -25,8 +26,7 @@ public class TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DriverSettings.configure();
     }
-
-    @AfterEach
+    @BeforeEach
     void openVivid() {
         open("https://vivid.money/en-eu/");
     }

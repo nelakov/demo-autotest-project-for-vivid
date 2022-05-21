@@ -9,9 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class OpenAccountPage {
     private SelenideElement
-            buttonOpenAccountInVideoBlock = $(byText("Open free account")),
-            buttonOpenAccountInHeaderPage = $(byText("Open free account")),
-            buttonOpenAccountInFooterPage = $(byText("Open free account")),
+            buttonOpenAccount = $(byText("Open free account")),
             inviteFormHeader = $(".inviteForm__title__YudQx > div"),
             inviteFormSubtitle = $(".inviteForm__subtitle__QmS8b"),
             switcherToEmail = $(".tabs__tab__RgT_f:nth-child(2)"),
@@ -27,16 +25,10 @@ public class OpenAccountPage {
     @Test
     public OpenAccountPage OpenAccountFromMainBlock() {
         open("/");
-        buttonOpenAccountInVideoBlock.click();
+        buttonOpenAccount.click();
         return this;
     }
 
-    @Step("Tap Button Open Account from header")
-    @Test
-    public OpenAccountPage OpenAccountFromHeader() {
-        buttonOpenAccountInHeaderPage.parent().click();
-        return this;
-    }
 
     @Step("Tap Button Open Account from footer")
     @Test
@@ -44,7 +36,7 @@ public class OpenAccountPage {
         executeJavaScript("window.scrollTo(0,3286.39990234375)");
         executeJavaScript("window.scrollTo(0,5055.2001953125)");
         executeJavaScript("window.scrollTo(0,6210.39990234375)");
-        buttonOpenAccountInFooterPage.click();
+        buttonOpenAccount.click();
         return this;
     }
 

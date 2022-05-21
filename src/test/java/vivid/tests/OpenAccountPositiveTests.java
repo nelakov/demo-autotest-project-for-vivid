@@ -20,10 +20,6 @@ public class OpenAccountPositiveTests extends TestBase {
     public void checkStartOpenFreeAccountFromDifferentStartedPoints() {
         openAccountPage
                 .OpenAccountFromMainBlock()
-                .closePage()
-                .OpenAccountFromHeader()
-                .closePage()
-                .OpenAccountFromFooter()
                 .closePage();
     }
 
