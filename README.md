@@ -39,13 +39,19 @@
 <img width="6%" title="Java" src="images/logo/Java.svg">
 <img width="6%" title="Selenide" src="images/logo/Selenide.svg">
 <img width="6%" title="Selenoid" src="images/logo/Selenoid.svg">
-<img width="6%" title="Allure Report" src="images/logo/Allure_Report.svg">
-<img width="6%" title="Gradle" src="images/logo/Gradle.svg">
+<img width="6%" title="Allure Report"src="images/logo/Allure_Report.svg">
+<img width="6%" title="Allure TestOps" src="images/logo/AllureTestOps.png">
+<img width="6%" title="Jira" src="images/logo/Jira.png">
+
 <img width="6%" title="JUnit5" src="images/logo/JUnit5.svg">
-<img width="6%" title="GitHub" src="images/logo/GitHub.svg">
+
 <img width="6%" title="Jenkins" src="images/logo/Jenkins.svg">
 <img width="6%" title="Telegram" src="images/logo/Telegram.svg">
+<img width="6%" title="Gradle" src="images/logo/Gradle.svg">
+<img width="6%" title="GitHub" src="images/logo/GitHub.svg">
 </p>
+
+
 
 In this project, autotests are written in <code>Java</code> using <code>Selenide</code> for UI tests.
 >
@@ -85,6 +91,15 @@ test
 -Dthreads=${THREADS}
 ```
 
+### :robot: New remote test running
+just
+
+```
+clean
+test
+-Dproperties=remote
+```
+
 ### :robot: Build Options
 
 > <code>REMOTE_URL</code> – the address of the remote server where the tests will run.
@@ -111,6 +126,33 @@ test
 
 <p align="center">
 <img title="Allure Overview Dashboard" src="images/screens/allure_overview_dashboard.png">
+</p>
+
+## <img width="6%" title="Allure TestOps" src="images/logo/AllureTestOps.png"> Integration with Allure Test Ops
+
+### :pushpin: Launches
+
+<p align="center">
+<img title="Allure Overview Dashboard" src="images/screens/launches.png">
+</p>
+
+### :pushpin: Custom dashboard
+
+<p align="center">
+<img title="Allure Overview Dashboard" src="images/screens/dashboard.png">
+</p>
+
+### :pushpin: Test cases 
+
+<p align="center">
+<img title="Allure Overview Dashboard" src="images/screens/allure_test_cases.png">
+</p>
+
+## <img width="6%" title="Jira" src="images/logo/Jira.png"> Integration with Jira
+> Also you can setting export your information to Jira about launches and test cases
+
+<p align="center">
+<img title="Allure Overview Dashboard" src="images/screens/Jira.png">
 </p>
 
 ## <img width="4%" title="Telegram" src="images/logo/Telegram.svg"> Telegram notifications using a bot
