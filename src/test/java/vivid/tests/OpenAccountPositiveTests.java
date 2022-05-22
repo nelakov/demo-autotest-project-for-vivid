@@ -30,7 +30,7 @@ public class OpenAccountPositiveTests extends TestBase {
                 .OpenAccountFromMainBlock()
                 .checkHeader()
                 .checkSubtitile()
-                .inputPhone(phone)
+                .inputPhone("+" + phone)
                 .tapInviteMe()
                 .checkSuccessfulInviteWithPhone();
     }
