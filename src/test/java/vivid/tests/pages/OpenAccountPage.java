@@ -59,7 +59,7 @@ public class OpenAccountPage {
     @Test
     public OpenAccountPage checkSubtitile() {
         inviteFormSubtitle.shouldBe(visible);
-        inviteFormSubtitle.shouldHave(text("Enter your e-mail and we'll send you a link to download the Vivid app"));
+        inviteFormSubtitle.shouldHave(text("Enter your phone number or e-mail and we'll send you a link to download the Vivid app"));
         return this;
     }
 
