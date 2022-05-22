@@ -24,16 +24,16 @@ public class OpenAccountPositiveTests extends TestBase {
     }
 
     //TODO: waiting fix for displayed phone tab
-//    @Test
-//    public void OpenFreeAccountWithPhone() {
-//        openAccountPage
-//                .OpenAccountFromMainBlock()
-//                .checkHeader()
-//                .checkSubtitile()
-//                .inputPhone(phone)
-//                .tapInviteMe()
-//                .checkSuccessfulInvite();
-//    }
+    @Test
+    public void OpenFreeAccountWithPhone() {
+        openAccountPage
+                .OpenAccountFromMainBlock()
+                .checkHeader()
+                .checkSubtitile()
+                .inputPhone(phone)
+                .tapInviteMe()
+                .checkSuccessfulInviteWithPhone();
+    }
 
     @Test
     public void OpenFreeAccountWithEmail() {
@@ -41,7 +41,7 @@ public class OpenAccountPositiveTests extends TestBase {
                 .OpenAccountFromMainBlock()
                 .checkHeader()
                 .checkSubtitile()
-                //.switchToEmail()
+                .switchToEmail()
                 .inputEmail(email)
                 .tapInviteMe()
                 .checkSuccessfulInviteWithEmail();
