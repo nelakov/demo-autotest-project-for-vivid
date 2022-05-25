@@ -10,15 +10,15 @@ public interface ProjectConfig extends Config {
     @Key("videoStorage")
     String videoStorage();
 
-    @Key("baseurl")
+    @Key("baseUrl")
     String webUrl();
 
     @Key("browser")
     String browser();
 
-    @Key("browser.size")
+    @Key("browserSize")
     String browserSize();
 
-    @Key("browser.version")
+    @Key("browserVersion")
     String browserVersion();
 }

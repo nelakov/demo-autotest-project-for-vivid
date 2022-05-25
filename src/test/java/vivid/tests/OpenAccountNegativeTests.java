@@ -24,7 +24,7 @@ public class OpenAccountNegativeTests extends TestBase {
     @MethodSource(value = "dataForNegativeOpenAccountTestsWithPhone")
     @ParameterizedTest(name = "Validation the Phone input field {0}")
     @DisplayName("Check validation the Phone input field")
-    void OpenFreeAccountWithWrongPhone(String wrongPhone, String errorMessage) {
+    void openFreeAccountWithWrongPhone(String wrongPhone, String errorMessage) {
         openAccountPage
                 .OpenAccountFromMainBlock()
                 .checkHeader()
@@ -45,7 +45,7 @@ public class OpenAccountNegativeTests extends TestBase {
 
     @MethodSource(value = "dataForNegativeOpenAccountTestsWithEmail")
     @ParameterizedTest(name = "Validation the Email input field {0}")
-    void OpenFreeAccountWithWrongEmail(String wrongEmail, String errorMessage) {
+    void openFreeAccountWithWrongEmail(String wrongEmail, String errorMessage) {
         openAccountPage
                 .OpenAccountFromMainBlock()
                 .checkHeader()

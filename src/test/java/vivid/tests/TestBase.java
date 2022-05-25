@@ -25,8 +25,8 @@ public class TestBase {
         DriverSettings.configure();
     }
     @BeforeEach
-    void openVivid() {
-        open("https://vivid.money/en-eu/");
+    void openMainPage() {
+        open(Configuration.baseUrl);
     }
 
     @AfterEach

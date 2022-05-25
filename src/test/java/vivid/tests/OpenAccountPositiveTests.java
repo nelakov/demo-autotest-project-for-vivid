@@ -25,7 +25,7 @@ public class OpenAccountPositiveTests extends TestBase {
 
     //TODO: waiting fix for displayed phone tab
     @Test
-    public void OpenFreeAccountWithPhone() {
+    public void openFreeAccountWithPhone() {
         openAccountPage
                 .OpenAccountFromMainBlock()
                 .checkHeader()
@@ -36,7 +36,7 @@ public class OpenAccountPositiveTests extends TestBase {
     }
 
     @Test
-    public void OpenFreeAccountWithEmail() {
+    public void openFreeAccountWithEmail() {
         openAccountPage
                 .OpenAccountFromMainBlock()
                 .checkHeader()

@@ -22,7 +22,6 @@ public class OpenAccountPage {
             inviteMeButton = $(".button__fluid__H8ZcO > .button__inner__oQ4Tw");
 
     @Step("Tap Button Open Account from video block")
-    @Test
     public OpenAccountPage OpenAccountFromMainBlock() {
         open("/");
         buttonOpenAccount.click();
@@ -31,7 +30,6 @@ public class OpenAccountPage {
 
 
     @Step("Tap Button Open Account from footer")
-    @Test
     public OpenAccountPage OpenAccountFromFooter() {
         executeJavaScript("window.scrollTo(0,3286.39990234375)");
         executeJavaScript("window.scrollTo(0,5055.2001953125)");
@@ -41,14 +39,12 @@ public class OpenAccountPage {
     }
 
     @Step("Close Page")
-    @Test
     public OpenAccountPage closePage() {
         closePage.click();
         return this;
     }
 
     @Step("Invite Form Have Header Text")
-    @Test
     public OpenAccountPage checkHeader() {
         inviteFormHeader.shouldBe(visible);
         inviteFormHeader.shouldHave(text("Open your free account now"));
@@ -56,7 +52,6 @@ public class OpenAccountPage {
     }
 
     @Step("Invite Form Have Subtitle Text")
-    @Test
     public OpenAccountPage checkSubtitile() {
         inviteFormSubtitle.shouldBe(visible);
         inviteFormSubtitle.shouldHave(text("Enter your phone number or e-mail and we'll send you a link to download the Vivid app"));
@@ -64,7 +59,6 @@ public class OpenAccountPage {
     }
 
     @Step("Input phone")
-    @Test
     public OpenAccountPage inputPhone(String phone) {
         executeJavaScript("document.querySelector('[name=PHONE]').style.opacity = 1");
         inputFieldPhone.sendKeys((CharSequence) phone);
@@ -72,14 +66,12 @@ public class OpenAccountPage {
     }
 
     @Step("Switch to Email tab")
-    @Test
     public OpenAccountPage switchToEmail() {
         switcherToEmail.click();
         return this;
     }
 
     @Step("Input email")
-    @Test
     public OpenAccountPage inputEmail(String email) {
         executeJavaScript("document.querySelector('[name=EMAIL]').style.opacity = 100");
         inputFieldEmail.sendKeys(email);
@@ -87,14 +79,12 @@ public class OpenAccountPage {
     }
 
     @Step("Invite me!")
-    @Test
     public OpenAccountPage tapInviteMe() {
         inviteMeButton.click();
         return this;
     }
 
     @Step("Successful invite with Phone")
-    @Test
     public OpenAccountPage checkSuccessfulInviteWithPhone() {
         congratsBlockTitle.shouldBe(visible);
         congratsBlockContent.shouldBe(visible);
@@ -104,7 +94,6 @@ public class OpenAccountPage {
     }
 
     @Step("Successful invite with Email")
-    @Test
     public OpenAccountPage checkSuccessfulInviteWithEmail() {
         congratsBlockTitle.shouldBe(visible);
         congratsBlockContent.shouldBe(visible);
@@ -114,7 +103,6 @@ public class OpenAccountPage {
     }
 
     @Step("Unsuccessful invite")
-    @Test
     public OpenAccountPage checkUnsuccesfulInvite(String errorMessage) {
         errorMessege.shouldBe(visible);
         errorMessege.shouldHave(text(errorMessage));
