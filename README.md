@@ -92,7 +92,6 @@ test
 ```
 
 ### :robot: New remote test running
-just
 
 ```
 clean
