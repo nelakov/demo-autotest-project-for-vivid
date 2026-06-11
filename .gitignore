@@ -42,3 +42,6 @@ target/
 !gradle/wrapper/gradle-wrapper.properties
 # Local Claude Code context (not shared)
 CLAUDE.md
+
+# Selenoid recorded videos
+selenoid/video/

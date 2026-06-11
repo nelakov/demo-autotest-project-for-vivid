@@ -1,0 +1,42 @@
+# Local Selenoid grid for remote test runs.
+#   docker compose up -d                  # start grid + UI
+#   docker pull selenoid/vnc_chrome:128.0 # pull a browser image (one-time)
+#   ./gradlew clean test -Dproperties=remote
+# UI: http://localhost:8080 · hub: http://localhost:4444/wd/hub
+services:
+  selenoid:
+    image: aerokube/selenoid:1.11.3
+    container_name: selenoid
+    restart: unless-stopped
+    ports:
+      - "4444:4444"
+    volumes:
+      - "./selenoid:/etc/selenoid"
+      - "./selenoid/video:/opt/selenoid/video"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      # Host path the video-recorder sidecar mounts; must be absolute.
+      - OVERRIDE_VIDEO_OUTPUT_DIR=${PWD}/selenoid/video
+    command:
+      - "-conf"
+      - "/etc/selenoid/browsers.json"
+      - "-video-output-dir"
+      - "/opt/selenoid/video"
+      - "-container-network"
+      - "selenoid-net"
+
+  selenoid-ui:
+    image: aerokube/selenoid-ui:1.10.11
+    container_name: selenoid-ui
+    restart: unless-stopped
+    depends_on:
+      - selenoid
+    ports:
+      - "8080:8080"
+    command:
+      - "--selenoid-uri"
+      - "http://selenoid:4444"
+
+networks:
+  default:
+    name: selenoid-net
