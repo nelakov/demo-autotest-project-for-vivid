@@ -95,7 +95,6 @@ public class OpenAccountPage {
     public OpenAccountPage checkUnsuccesfulInvite(String errorMessage) {
         errorMessege.shouldBe(visible);
         errorMessege.shouldHave(text(errorMessage));
-        errorMessege.getCssValue("color").contains("#c40b08");
         return this;
     }
 }

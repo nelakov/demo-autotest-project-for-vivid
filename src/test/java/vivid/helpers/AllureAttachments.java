@@ -46,10 +46,13 @@ public class AllureAttachments {
                     sleep(5000);
                 } catch (IOException e) {
                     LOGGER.warn("[ALLURE VIDEO ATTACHMENT ERROR] Cant attach allure video, {}", videoUrl);
-                    e.printStackTrace();
                 }
             }
-            Allure.addAttachment("Video", "video/mp4", videoInputStream, "mp4");
+            if (videoInputStream != null) {
+                Allure.addAttachment("Video", "video/mp4", videoInputStream, "mp4");
+            } else {
+                LOGGER.warn("[ALLURE VIDEO ATTACHMENT ERROR] Video not available after retries, url: {}", videoUrl);
+            }
         }
     }
 }
