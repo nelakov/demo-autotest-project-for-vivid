@@ -126,6 +126,18 @@ the application URL, e.g. `./gradlew clean test -DbaseUrl=https://vivid.money/en
 ./gradlew allureReport    # generate a static report into build/reports/allure-report
 ```
 
+### :whale: Running against a local Selenoid grid
+
+```bash
+docker compose up -d                       # start Selenoid + Selenoid UI
+docker pull selenoid/vnc_chrome:128.0      # pull the browser image (one-time)
+./gradlew clean test -Dproperties=remote   # run the suite against the grid
+```
+
+> Selenoid UI — http://localhost:8080 · grid — http://localhost:4444/wd/hub · recorded videos — `selenoid/video/`
+>
+> Profile lives in `src/test/resources/config/remote.properties` (copy from `remote.properties.example`); browser images/versions in `selenoid/browsers.json`. Keep the version in `remote.properties` (`browserVersion`) in sync with the image you pull.
+
 ### :robot: Remote test running
 
 ## <img src="images/logo/Jenkins.svg" width="25" height="25"  alt="Jenkins"/></a> Jenkins <a target="_blank" href="https://jenkins.autotests.cloud/job/demo-project-for-vivid/"> job </a>

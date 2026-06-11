@@ -1,0 +1,10 @@
+# Selenoid remote-run profile (template).
+# Copy to remote.properties in this same folder, then run:
+#   ./gradlew test -Dproperties=remote
+# Owner-free ProjectConfig loads it from the classpath as config/remote.properties.
+remoteDriverUrl=http://localhost:4444/wd/hub
+videoStorage=http://localhost:4444/video/
+baseUrl=https://vivid.money/en-eu/
+browser=chrome
+browserVersion=128.0
+browserSize=1920x1080
