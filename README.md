@@ -67,12 +67,44 @@ In this project, autotests are written in <code>Java</code> using <code>Selenide
 >
 > After the run is completed, notifications are sent using the bot to <code>Telegram</code>.
 
+### :package: Key versions
+
+| Tool | Version |
+|------|---------|
+| Java | 25 |
+| Gradle | 9.5.1 (wrapper) |
+| Selenide | 7.16.2 |
+| JUnit | 6.1.0 |
+| Allure | 2.35.2 |
+| AssertJ | 3.27.7 |
+| Datafaker | 2.5.4 |
+
 ## Running tests from the terminal
+
+### :wrench: Prerequisites
+
+> <code>JDK 25</code> — the build targets Java 25 via Gradle toolchains.
+>
+> No local Gradle install required — the project ships a Gradle wrapper (`./gradlew`).
 
 ### :robot: Running Tests Locally
 
+```bash
+./gradlew clean test                       # run all tests
+./gradlew clean test -Dbrowser=chrome      # choose browser
+./gradlew clean test -Dthreads=4           # parallel run, N threads
 ```
-gradle clean test
+
+Settings (`baseUrl`, `browser`, `browserSize`, `browserVersion`, `remoteDriverUrl`, `videoStorage`)
+are read from JVM system properties (`-Dkey=value`), with an optional classpath file
+`config/<profile>.properties` selected via `-Dproperties=<profile>`. A local run needs at least
+the application URL, e.g. `./gradlew clean test -DbaseUrl=https://vivid.money/en-eu/ -Dbrowser=chrome`.
+
+### :bar_chart: Viewing the Allure report locally
+
+```bash
+./gradlew allureServe     # build and open the report in a browser
+./gradlew allureReport    # generate a static report into build/reports/allure-report
 ```
 
 ### :robot: Remote test running
