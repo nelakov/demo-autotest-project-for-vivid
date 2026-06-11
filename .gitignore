@@ -40,3 +40,5 @@ target/
 # Gradle wrapper must be committed (negates *.jar / *.properties above)
 !gradle/wrapper/gradle-wrapper.jar
 !gradle/wrapper/gradle-wrapper.properties
+# Local Claude Code context (not shared)
+CLAUDE.md
