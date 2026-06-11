@@ -26,12 +26,12 @@ public class OpenAccountNegativeTests extends TestBase {
     @DisplayName("Check validation the Phone input field")
     void openFreeAccountWithWrongPhone(String wrongPhone, String errorMessage) {
         openAccountPage
-                .OpenAccountFromMainBlock()
+                .openAccountFromMainBlock()
                 .checkHeader()
-                .checkSubtitile()
+                .checkSubtitle()
                 .inputPhone(wrongPhone)
                 .tapInviteMe()
-                .checkUnsuccesfulInvite(errorMessage);
+                .checkUnsuccessfulInvite(errorMessage);
     }
     static Stream<Arguments> dataForNegativeOpenAccountTestsWithEmail() {
         return Stream.of(
@@ -47,13 +47,13 @@ public class OpenAccountNegativeTests extends TestBase {
     @ParameterizedTest(name = "Validation the Email input field {0}")
     void openFreeAccountWithWrongEmail(String wrongEmail, String errorMessage) {
         openAccountPage
-                .OpenAccountFromMainBlock()
+                .openAccountFromMainBlock()
                 .checkHeader()
-                .checkSubtitile()
+                .checkSubtitle()
                 .switchToEmail()
                 .inputEmail(wrongEmail)
                 .tapInviteMe()
-                .checkUnsuccesfulInvite(errorMessage);
+                .checkUnsuccessfulInvite(errorMessage);
     }
 }
 
