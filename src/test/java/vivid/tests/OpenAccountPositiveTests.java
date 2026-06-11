@@ -1,6 +1,6 @@
 package vivid.tests;
 
-import com.github.javafaker.Faker;
+import net.datafaker.Faker;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import vivid.helpers.DriverUtils;
@@ -14,7 +14,7 @@ public class OpenAccountPositiveTests extends TestBase {
     OpenAccountPage openAccountPage = new OpenAccountPage();
     Faker faker = new Faker();
     String email = faker.internet().emailAddress();
-    String phone = String.valueOf(faker.phoneNumber());
+    String phone = faker.phoneNumber().cellPhone();
 
     @Test
     public void checkStartOpenFreeAccountFromDifferentStartedPoints() {
