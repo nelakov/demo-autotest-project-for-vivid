@@ -14,7 +14,7 @@ public class OpenAccountPositiveTests extends TestBase {
     OpenAccountPage openAccountPage = new OpenAccountPage();
     Faker faker = new Faker();
     String email = faker.internet().emailAddress();
-    String phone = faker.phoneNumber().cellPhone();
+    String phone = faker.phoneNumber().subscriberNumber(10);
 
     @Test
     public void checkStartOpenFreeAccountFromDifferentStartedPoints() {

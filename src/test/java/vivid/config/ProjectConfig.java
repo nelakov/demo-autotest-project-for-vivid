@@ -34,7 +34,12 @@ public class ProjectConfig {
     }
 
     public String webUrl() {
-        return get("baseUrl");
+        String url = get("baseUrl");
+        if (url.isEmpty()) {
+            throw new IllegalStateException(
+                    "baseUrl is not configured. Pass -DbaseUrl=<url> or set baseUrl in config/<profile>.properties via -Dproperties=<profile>.");
+        }
+        return url;
     }
 
     public String browser() {
