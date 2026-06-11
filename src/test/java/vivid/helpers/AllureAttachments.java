@@ -15,6 +15,9 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class AllureAttachments {
     public static final Logger LOGGER = LoggerFactory.getLogger(AllureAttachments.class);
 
+    private static final int MAX_VIDEO_RETRIES = 10;
+    private static final long VIDEO_RETRY_DELAY_MS = 5000;
+
     @Attachment(value = "{attachName}", type = "text/plain")
     private static String addMessage(String attachName, String text) {
         return text;
@@ -34,25 +37,25 @@ public class AllureAttachments {
     }
     public static void addVideo(String sessionId) {
         URL videoUrl = DriverUtils.getVideoUrl(sessionId);
-        if (videoUrl != null) {
-            InputStream videoInputStream = null;
-            sleep(5000);
-
-            for (int i = 0; i < 10; i++) {
-                try {
-                    videoInputStream = videoUrl.openStream();
-                    break;
-                } catch (FileNotFoundException e) {
-                    sleep(5000);
-                } catch (IOException e) {
-                    LOGGER.warn("[ALLURE VIDEO ATTACHMENT ERROR] Cant attach allure video, {}", videoUrl);
-                }
+        if (videoUrl == null) {
+            return;
+        }
+        InputStream videoInputStream = null;
+        for (int attempt = 0; attempt < MAX_VIDEO_RETRIES; attempt++) {
+            try {
+                videoInputStream = videoUrl.openStream();
+                break;
+            } catch (FileNotFoundException notReadyYet) {
+                sleep(VIDEO_RETRY_DELAY_MS);
+            } catch (IOException e) {
+                LOGGER.warn("[ALLURE VIDEO ATTACHMENT ERROR] Cant attach allure video, {}", videoUrl);
+                break;
             }
-            if (videoInputStream != null) {
-                Allure.addAttachment("Video", "video/mp4", videoInputStream, "mp4");
-            } else {
-                LOGGER.warn("[ALLURE VIDEO ATTACHMENT ERROR] Video not available after retries, url: {}", videoUrl);
-            }
+        }
+        if (videoInputStream != null) {
+            Allure.addAttachment("Video", "video/mp4", videoInputStream, "mp4");
+        } else {
+            LOGGER.warn("[ALLURE VIDEO ATTACHMENT ERROR] Video not available after retries, url: {}", videoUrl);
         }
     }
 }

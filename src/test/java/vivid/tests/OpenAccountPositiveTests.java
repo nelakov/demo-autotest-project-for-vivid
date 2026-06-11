@@ -32,7 +32,7 @@ public class OpenAccountPositiveTests extends TestBase {
                 .checkSubtitle()
                 .inputPhone("+" + phone)
                 .tapInviteMe()
-                .checkSuccessfulInviteWithPhone();
+                .checkSuccessfulInvite("Yay! The download link is on the way. Please check your phone");
     }
 
     @Test
@@ -44,7 +44,7 @@ public class OpenAccountPositiveTests extends TestBase {
                 .switchToEmail()
                 .inputEmail(email)
                 .tapInviteMe()
-                .checkSuccessfulInviteWithEmail();
+                .checkSuccessfulInvite("Yay! The download link is on the way. Please check your e-mail");
     }
 
     @Test

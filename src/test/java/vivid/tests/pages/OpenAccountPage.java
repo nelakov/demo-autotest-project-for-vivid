@@ -50,7 +50,7 @@ public class OpenAccountPage {
     @Step("Input phone")
     public OpenAccountPage inputPhone(String phone) {
         executeJavaScript("document.querySelector('[name=PHONE]').style.opacity = 1");
-        inputFieldPhone.sendKeys((CharSequence) phone);
+        inputFieldPhone.sendKeys(phone);
         return this;
     }
 
@@ -62,7 +62,7 @@ public class OpenAccountPage {
 
     @Step("Input email")
     public OpenAccountPage inputEmail(String email) {
-        executeJavaScript("document.querySelector('[name=EMAIL]').style.opacity = 100");
+        executeJavaScript("document.querySelector('[name=EMAIL]').style.opacity = 1");
         inputFieldEmail.sendKeys(email);
         return this;
     }
@@ -73,21 +73,12 @@ public class OpenAccountPage {
         return this;
     }
 
-    @Step("Successful invite with Phone")
-    public OpenAccountPage checkSuccessfulInviteWithPhone() {
+    @Step("Successful invite")
+    public OpenAccountPage checkSuccessfulInvite(String expectedContent) {
         congratsBlockTitle.shouldBe(visible);
         congratsBlockContent.shouldBe(visible);
         congratsBlockTitle.shouldHave(text("Congrats \uD83C\uDF89"));
-        congratsBlockContent.shouldHave(text("Yay! The download link is on the way. Please check your phone"));
-        return this;
-    }
-
-    @Step("Successful invite with Email")
-    public OpenAccountPage checkSuccessfulInviteWithEmail() {
-        congratsBlockTitle.shouldBe(visible);
-        congratsBlockContent.shouldBe(visible);
-        congratsBlockTitle.shouldHave(text("Congrats \uD83C\uDF89"));
-        congratsBlockContent.shouldHave(text("Yay! The download link is on the way. Please check your e-mail"));
+        congratsBlockContent.shouldHave(text(expectedContent));
         return this;
     }
 
