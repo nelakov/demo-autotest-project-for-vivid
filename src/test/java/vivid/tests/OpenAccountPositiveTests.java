@@ -1,6 +1,6 @@
 package vivid.tests;
 
-import com.github.javafaker.Faker;
+import net.datafaker.Faker;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import vivid.helpers.DriverUtils;
@@ -14,12 +14,12 @@ public class OpenAccountPositiveTests extends TestBase {
     OpenAccountPage openAccountPage = new OpenAccountPage();
     Faker faker = new Faker();
     String email = faker.internet().emailAddress();
-    String phone = String.valueOf(faker.phoneNumber());
+    String phone = faker.phoneNumber().subscriberNumber(10);
 
     @Test
     public void checkStartOpenFreeAccountFromDifferentStartedPoints() {
         openAccountPage
-                .OpenAccountFromMainBlock()
+                .openAccountFromMainBlock()
                 .closePage();
     }
 
@@ -27,24 +27,24 @@ public class OpenAccountPositiveTests extends TestBase {
     @Test
     public void openFreeAccountWithPhone() {
         openAccountPage
-                .OpenAccountFromMainBlock()
+                .openAccountFromMainBlock()
                 .checkHeader()
-                .checkSubtitile()
+                .checkSubtitle()
                 .inputPhone("+" + phone)
                 .tapInviteMe()
-                .checkSuccessfulInviteWithPhone();
+                .checkSuccessfulInvite("Yay! The download link is on the way. Please check your phone");
     }
 
     @Test
     public void openFreeAccountWithEmail() {
         openAccountPage
-                .OpenAccountFromMainBlock()
+                .openAccountFromMainBlock()
                 .checkHeader()
-                .checkSubtitile()
+                .checkSubtitle()
                 .switchToEmail()
                 .inputEmail(email)
                 .tapInviteMe()
-                .checkSuccessfulInviteWithEmail();
+                .checkSuccessfulInvite("Yay! The download link is on the way. Please check your e-mail");
     }
 
     @Test

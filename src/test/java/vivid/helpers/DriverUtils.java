@@ -36,7 +36,6 @@ public class DriverUtils {
             return new URL(videoUrl);
         } catch (MalformedURLException e) {
             LOGGER.warn("[ALLURE VIDEO ATTACHMENT ERROR] Wrong test video url, {}", videoUrl);
-            e.printStackTrace();
         }
         return null;
     }
