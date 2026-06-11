@@ -1,6 +1,5 @@
 package vivid.tests;
 
-import com.codeborne.selenide.Config;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import vivid.config.Project;
@@ -35,7 +34,6 @@ public class TestBase {
 
         AllureAttachments.addScreenshotAs("Last screenshot");
         AllureAttachments.addPageSource();
-//        AllureAttachments.attachNetwork(); // todo
         AllureAttachments.addBrowserConsoleLogs();
 
         Selenide.closeWebDriver();

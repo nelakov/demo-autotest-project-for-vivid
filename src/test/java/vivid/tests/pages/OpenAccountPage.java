@@ -1,7 +1,6 @@
 package vivid.tests.pages;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -24,16 +23,6 @@ public class OpenAccountPage {
     @Step("Tap Button Open Account from video block")
     public OpenAccountPage OpenAccountFromMainBlock() {
         open("/");
-        buttonOpenAccount.click();
-        return this;
-    }
-
-
-    @Step("Tap Button Open Account from footer")
-    public OpenAccountPage OpenAccountFromFooter() {
-        executeJavaScript("window.scrollTo(0,3286.39990234375)");
-        executeJavaScript("window.scrollTo(0,5055.2001953125)");
-        executeJavaScript("window.scrollTo(0,6210.39990234375)");
         buttonOpenAccount.click();
         return this;
     }
