@@ -19,7 +19,7 @@ public class OpenAccountPositiveTests extends TestBase {
     @Test
     public void checkStartOpenFreeAccountFromDifferentStartedPoints() {
         openAccountPage
-                .OpenAccountFromMainBlock()
+                .openAccountFromMainBlock()
                 .closePage();
     }
 
@@ -27,9 +27,9 @@ public class OpenAccountPositiveTests extends TestBase {
     @Test
     public void openFreeAccountWithPhone() {
         openAccountPage
-                .OpenAccountFromMainBlock()
+                .openAccountFromMainBlock()
                 .checkHeader()
-                .checkSubtitile()
+                .checkSubtitle()
                 .inputPhone("+" + phone)
                 .tapInviteMe()
                 .checkSuccessfulInviteWithPhone();
@@ -38,9 +38,9 @@ public class OpenAccountPositiveTests extends TestBase {
     @Test
     public void openFreeAccountWithEmail() {
         openAccountPage
-                .OpenAccountFromMainBlock()
+                .openAccountFromMainBlock()
                 .checkHeader()
-                .checkSubtitile()
+                .checkSubtitle()
                 .switchToEmail()
                 .inputEmail(email)
                 .tapInviteMe()

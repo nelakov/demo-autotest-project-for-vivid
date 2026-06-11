@@ -16,12 +16,12 @@ public class OpenAccountPage {
             inputFieldEmail = $(By.cssSelector("[name='EMAIL']")),
             congratsBlockTitle = $(".messageBlock__title__I9Ic_"),
             congratsBlockContent = $(".messageBlock__content__E36Ex"),
-            errorMessege = $(".FormRow__errorBlock__oV8XY.FormRow__errorBlock_showed__Nkbc2"),
+            errorBlock = $(".FormRow__errorBlock__oV8XY.FormRow__errorBlock_showed__Nkbc2"),
             closePage = $(".styles__closeIcon__hI3nh"),
             inviteMeButton = $(".button__fluid__H8ZcO > .button__inner__oQ4Tw");
 
     @Step("Tap Button Open Account from video block")
-    public OpenAccountPage OpenAccountFromMainBlock() {
+    public OpenAccountPage openAccountFromMainBlock() {
         open("/");
         buttonOpenAccount.click();
         return this;
@@ -41,7 +41,7 @@ public class OpenAccountPage {
     }
 
     @Step("Invite Form Have Subtitle Text")
-    public OpenAccountPage checkSubtitile() {
+    public OpenAccountPage checkSubtitle() {
         inviteFormSubtitle.shouldBe(visible);
         inviteFormSubtitle.shouldHave(text("Enter your phone number or e-mail and we'll send you a link to download the Vivid app"));
         return this;
@@ -92,9 +92,9 @@ public class OpenAccountPage {
     }
 
     @Step("Unsuccessful invite")
-    public OpenAccountPage checkUnsuccesfulInvite(String errorMessage) {
-        errorMessege.shouldBe(visible);
-        errorMessege.shouldHave(text(errorMessage));
+    public OpenAccountPage checkUnsuccessfulInvite(String errorMessage) {
+        errorBlock.shouldBe(visible);
+        errorBlock.shouldHave(text(errorMessage));
         return this;
     }
 }
