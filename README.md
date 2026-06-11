@@ -1,4 +1,23 @@
-# Demonstration test automation project for Vivid Money
+<h1 align="center">🚀 Vivid Money — UI Test Automation</h1>
+
+<p align="center">
+  <i>Production-style end-to-end UI autotests for the Vivid Money web app — fast, parallel, and beautifully reported.</i>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-25-orange?logo=openjdk&logoColor=white" alt="Java 25">
+  <img src="https://img.shields.io/badge/Gradle-9.5-02303A?logo=gradle&logoColor=white" alt="Gradle 9.5">
+  <img src="https://img.shields.io/badge/Selenide-7.16-007ec6?logo=selenium&logoColor=white" alt="Selenide 7.16">
+  <img src="https://img.shields.io/badge/JUnit-5-25A162?logo=junit5&logoColor=white" alt="JUnit 5">
+  <img src="https://img.shields.io/badge/Allure-2.35-FF5722" alt="Allure 2.35">
+  <img src="https://img.shields.io/badge/Selenoid-Docker%20grid-2496ED?logo=docker&logoColor=white" alt="Selenoid">
+</p>
+
+## :sparkles: Overview
+
+A compact but production-grade UI test-automation suite that drives the live **Vivid Money** web app end-to-end. Built on the **Page Object Model**, it runs locally with a single command or at scale on a remote **Selenoid** Docker grid, executes tests in **parallel**, and turns every run into a rich **Allure** report — screenshots, page source, browser console logs, and full session **video** attached to each test. Continuous integration runs on **Jenkins**, with results delivered straight to **Telegram**.
+
+> **Why it's worth a look** — clean POM architecture · parallel JUnit 5 execution · local _or_ remote (Selenoid) runs from the same code · settings overridable by `-D` flags · Allure reporting with video, logs & screenshots · CI and chat notifications wired end-to-end.
 
 ## :page_with_curl:    Content
 
