@@ -25,7 +25,6 @@
 .allure/
 .gradle/
 allure-results/
-gradle/
 build/
 bin/
 out/
@@ -35,7 +34,9 @@ target/
 .project
 .settings/org.eclipse.buildship.core.prefs
 .vscode
-/gradlew
-/gradlew.bat
 .todo
 *.properties
+
+# Gradle wrapper must be committed (negates *.jar / *.properties above)
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties

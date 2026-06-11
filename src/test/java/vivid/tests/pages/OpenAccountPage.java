@@ -1,7 +1,6 @@
 package vivid.tests.pages;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -17,23 +16,13 @@ public class OpenAccountPage {
             inputFieldEmail = $(By.cssSelector("[name='EMAIL']")),
             congratsBlockTitle = $(".messageBlock__title__I9Ic_"),
             congratsBlockContent = $(".messageBlock__content__E36Ex"),
-            errorMessege = $(".FormRow__errorBlock__oV8XY.FormRow__errorBlock_showed__Nkbc2"),
+            errorBlock = $(".FormRow__errorBlock__oV8XY.FormRow__errorBlock_showed__Nkbc2"),
             closePage = $(".styles__closeIcon__hI3nh"),
             inviteMeButton = $(".button__fluid__H8ZcO > .button__inner__oQ4Tw");
 
     @Step("Tap Button Open Account from video block")
-    public OpenAccountPage OpenAccountFromMainBlock() {
+    public OpenAccountPage openAccountFromMainBlock() {
         open("/");
-        buttonOpenAccount.click();
-        return this;
-    }
-
-
-    @Step("Tap Button Open Account from footer")
-    public OpenAccountPage OpenAccountFromFooter() {
-        executeJavaScript("window.scrollTo(0,3286.39990234375)");
-        executeJavaScript("window.scrollTo(0,5055.2001953125)");
-        executeJavaScript("window.scrollTo(0,6210.39990234375)");
         buttonOpenAccount.click();
         return this;
     }
@@ -52,7 +41,7 @@ public class OpenAccountPage {
     }
 
     @Step("Invite Form Have Subtitle Text")
-    public OpenAccountPage checkSubtitile() {
+    public OpenAccountPage checkSubtitle() {
         inviteFormSubtitle.shouldBe(visible);
         inviteFormSubtitle.shouldHave(text("Enter your phone number or e-mail and we'll send you a link to download the Vivid app"));
         return this;
@@ -61,7 +50,7 @@ public class OpenAccountPage {
     @Step("Input phone")
     public OpenAccountPage inputPhone(String phone) {
         executeJavaScript("document.querySelector('[name=PHONE]').style.opacity = 1");
-        inputFieldPhone.sendKeys((CharSequence) phone);
+        inputFieldPhone.sendKeys(phone);
         return this;
     }
 
@@ -73,7 +62,7 @@ public class OpenAccountPage {
 
     @Step("Input email")
     public OpenAccountPage inputEmail(String email) {
-        executeJavaScript("document.querySelector('[name=EMAIL]').style.opacity = 100");
+        executeJavaScript("document.querySelector('[name=EMAIL]').style.opacity = 1");
         inputFieldEmail.sendKeys(email);
         return this;
     }
@@ -84,29 +73,19 @@ public class OpenAccountPage {
         return this;
     }
 
-    @Step("Successful invite with Phone")
-    public OpenAccountPage checkSuccessfulInviteWithPhone() {
+    @Step("Successful invite")
+    public OpenAccountPage checkSuccessfulInvite(String expectedContent) {
         congratsBlockTitle.shouldBe(visible);
         congratsBlockContent.shouldBe(visible);
         congratsBlockTitle.shouldHave(text("Congrats \uD83C\uDF89"));
-        congratsBlockContent.shouldHave(text("Yay! The download link is on the way. Please check your phone"));
-        return this;
-    }
-
-    @Step("Successful invite with Email")
-    public OpenAccountPage checkSuccessfulInviteWithEmail() {
-        congratsBlockTitle.shouldBe(visible);
-        congratsBlockContent.shouldBe(visible);
-        congratsBlockTitle.shouldHave(text("Congrats \uD83C\uDF89"));
-        congratsBlockContent.shouldHave(text("Yay! The download link is on the way. Please check your e-mail"));
+        congratsBlockContent.shouldHave(text(expectedContent));
         return this;
     }
 
     @Step("Unsuccessful invite")
-    public OpenAccountPage checkUnsuccesfulInvite(String errorMessage) {
-        errorMessege.shouldBe(visible);
-        errorMessege.shouldHave(text(errorMessage));
-        errorMessege.getCssValue("color").contains("#c40b08");
+    public OpenAccountPage checkUnsuccessfulInvite(String errorMessage) {
+        errorBlock.shouldBe(visible);
+        errorBlock.shouldHave(text(errorMessage));
         return this;
     }
 }

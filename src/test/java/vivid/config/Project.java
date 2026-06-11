@@ -1,13 +1,13 @@
 package vivid.config;
 
-import org.aeonbits.owner.ConfigFactory;
-
 public class Project {
-    public static ProjectConfig config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
+    public static final ProjectConfig config = new ProjectConfig();
+
     public static boolean isRemoteWebDriver() {
-        return !config.remoteDriverUrl().equals("");
+        return !config.remoteDriverUrl().isEmpty();
     }
+
     public static boolean isVideoOn() {
-        return !config.videoStorage().equals("");
+        return !config.videoStorage().isEmpty();
     }
 }

@@ -1,24 +1,60 @@
 package vivid.config;
 
-import org.aeonbits.owner.Config;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
-@Config.Sources("classpath:config/${properties}.properties")
-public interface ProjectConfig extends Config {
-    @Key("remoteDriverUrl")
-    String remoteDriverUrl();
+/**
+ * Test configuration: values come from a classpath properties file
+ * (config/${properties}.properties) and can be overridden by JVM system
+ * properties (-Dkey=value). Replaces the abandoned org.aeonbits.owner library.
+ * A missing key resolves to "" (never null), so callers stay NPE-free.
+ */
+public class ProjectConfig {
+    private final Properties fileProperties = new Properties();
 
-    @Key("videoStorage")
-    String videoStorage();
+    public ProjectConfig() {
+        String profile = System.getProperty("properties", "");
+        String resource = "config/" + profile + ".properties";
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream(resource)) {
+            if (input != null) {
+                fileProperties.load(input);
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Cannot read test config: " + resource, e);
+        }
+    }
 
-    @Key("baseUrl")
-    String webUrl();
+    public String remoteDriverUrl() {
+        return get("remoteDriverUrl");
+    }
 
-    @Key("browser")
-    String browser();
+    public String videoStorage() {
+        return get("videoStorage");
+    }
 
-    @Key("browserSize")
-    String browserSize();
+    public String webUrl() {
+        String url = get("baseUrl");
+        if (url.isEmpty()) {
+            throw new IllegalStateException(
+                    "baseUrl is not configured. Pass -DbaseUrl=<url> or set baseUrl in config/<profile>.properties via -Dproperties=<profile>.");
+        }
+        return url;
+    }
 
-    @Key("browserVersion")
-    String browserVersion();
+    public String browser() {
+        return get("browser");
+    }
+
+    public String browserSize() {
+        return get("browserSize");
+    }
+
+    public String browserVersion() {
+        return get("browserVersion");
+    }
+
+    private String get(String key) {
+        return System.getProperty(key, fileProperties.getProperty(key, ""));
+    }
 }
