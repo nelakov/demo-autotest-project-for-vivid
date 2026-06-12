@@ -6,10 +6,10 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Java-25-orange?logo=openjdk&logoColor=white" alt="Java 25">
-  <img src="https://img.shields.io/badge/Gradle-9.5-02303A?logo=gradle&logoColor=white" alt="Gradle 9.5">
-  <img src="https://img.shields.io/badge/Selenide-7.16-007ec6?logo=selenium&logoColor=white" alt="Selenide 7.16">
-  <img src="https://img.shields.io/badge/JUnit-5-25A162?logo=junit5&logoColor=white" alt="JUnit 5">
-  <img src="https://img.shields.io/badge/Allure-2.35-FF5722" alt="Allure 2.35">
+  <img src="https://img.shields.io/badge/Gradle-9.5.1-02303A?logo=gradle&logoColor=white" alt="Gradle 9.5.1">
+  <img src="https://img.shields.io/badge/Selenide-7.16.2-007ec6?logo=selenium&logoColor=white" alt="Selenide 7.16.2">
+  <img src="https://img.shields.io/badge/JUnit-5.14.4-25A162?logo=junit5&logoColor=white" alt="JUnit 5.14.4">
+  <img src="https://img.shields.io/badge/Allure-2.35.2-FF5722" alt="Allure 2.35.2">
   <img src="https://img.shields.io/badge/Selenoid-Docker%20grid-2496ED?logo=docker&logoColor=white" alt="Selenoid">
 </p>
 
@@ -17,7 +17,7 @@
 
 A compact but production-grade UI test-automation suite that drives the live **Vivid Money** web app end-to-end. Built on the **Page Object Model**, it runs locally with a single command or at scale on a remote **Selenoid** Docker grid, executes tests in **parallel**, and turns every run into a rich **Allure** report — screenshots, page source, browser console logs, and full session **video** attached to each test. Continuous integration runs on **Jenkins**, with results delivered straight to **Telegram**.
 
-> **Why it's worth a look** — clean POM architecture · parallel JUnit 5 execution · local _or_ remote (Selenoid) runs from the same code · settings overridable by `-D` flags · Allure reporting with video, logs & screenshots · CI and chat notifications wired end-to-end.
+> **Why it's worth a look** — clean Page Object Model architecture · parallel JUnit 5 execution · local _or_ remote (Selenoid) runs from the same code · settings overridable by `-D` flags · Allure reporting with video, logs & screenshots · CI and chat notifications wired end-to-end.
 
 ## :page_with_curl:    Content
 
@@ -70,21 +70,7 @@ A compact but production-grade UI test-automation suite that drives the live **V
 <img width="6%" title="GitHub" src="images/logo/GitHub.svg">
 </p>
 
-
-
-In this project, autotests are written in <code>Java</code> using <code>Selenide</code> for UI tests.
->
-> <code>Selenoid</code> launches browsers in <code>Docker</code> containers.
->
-> <code>Allure Report</code> generates a test run report.
->
-> <code>Gradle</code> is used for automated project build.
->
-> <code>JUnit 5</code> is used as a unit testing library.
->
-> <code>Jenkins</code> runs the tests.
->
-> After the run is completed, notifications are sent using the bot to <code>Telegram</code>.
+> <code>Selenide</code> drives the UI · <code>Selenoid</code> runs browsers in <code>Docker</code> · <code>Allure</code> reports each run · <code>Gradle</code> (Kotlin DSL) builds · <code>JUnit 5</code> is the test engine · <code>Jenkins</code> runs CI · <code>Telegram</code> delivers the result.
 
 ### :package: Key versions
 
@@ -93,10 +79,27 @@ In this project, autotests are written in <code>Java</code> using <code>Selenide
 | Java | 25 |
 | Gradle | 9.5.1 (wrapper) |
 | Selenide | 7.16.2 |
-| JUnit | 6.1.0 |
+| JUnit | 5.14.4 |
 | Allure | 2.35.2 |
 | AssertJ | 3.27.7 |
 | Datafaker | 2.5.4 |
+| AspectJ weaver | 1.9.25.1 |
+| slf4j-simple | 2.0.18 |
+
+### :file_folder: Project layout
+
+```
+src/test/java/vivid/
+  config/       Project.java · ProjectConfig.java     # plain Properties config (-D overrides + config/<profile>.properties)
+  helpers/      DriverSettings · DriverUtils · AllureAttachments
+  tests/        TestBase + *Tests.java
+  tests/pages/  MainPage · OpenAccountPage             # Page Object Model
+src/test/resources/config/  <profile>.properties        # gitignored; *.example committed
+docker-compose.yml · selenoid/browsers.json             # local Selenoid grid
+build.gradle.kts                                         # Gradle Kotlin DSL
+```
+
+UI interaction lives in the page objects; tests orchestrate them through fluent chains. Configuration uses no third-party library — a missing key resolves to `""`, and `baseUrl` fails fast if left unset.
 
 ## Running tests from the terminal
 
@@ -148,7 +151,6 @@ test
 -Dbrowser=${BROWSER}
 -DbrowserVersion=${BROWSER_VERSION}
 -DbrowserSize=${BROWSER_SIZE}
--DbrowserMobileView="${BROWSER_MOBILE}"
 -DremoteDriverUrl=https://user1:1234@${REMOTE_DRIVER_URL}/wd/hub/
 -DvideoStorage=https://${REMOTE_DRIVER_URL}/video/
 -Dthreads=${THREADS}
@@ -168,7 +170,7 @@ test
 >
 > <code>BROWSER</code> – the browser the tests will be run (_default - <code>chrome</code>_).
 >
-> <code>BROWSER_VERSION</code> – version of the browser the tests will be run (_default - <code>91.0</code>_).
+> <code>BROWSER_VERSION</code> – version of the browser the tests will be run (_e.g. <code>128.0</code>, must match a Selenoid image_).
 >
 > <code>BROWSER_SIZE</code> – the size of the browser window the tests will be run (_default - <code>1920x1080</code>_).
 
